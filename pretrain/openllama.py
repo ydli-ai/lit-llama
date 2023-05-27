@@ -35,7 +35,7 @@ log_interval = 1
 
 # Hyperparameters
 learning_rate = 6e-4
-batch_size = 16
+batch_size = 8
 micro_batch_size = 1
 max_iters = 6000  # num_epochs * epoch_size // devices
 weight_decay = 1e-1
@@ -136,7 +136,6 @@ def train(
     prev_t1 = time.time()
 
     for iter_num, train_data in enumerate(train_dataloader):
-        print(iter_num, train_data)
         t0 = time.time()
 
         # determine and set the learning rate for this iteration
@@ -194,7 +193,7 @@ def train(
             fabric.log_dict(
                 {"iter": iter_num, "train_loss": loss, "step": step_count, "lr": lr}
             )
-            fabric.print(
+            print(
                     f"iter {iter_num}: loss {loss.item():.4f}, time: {dt*1000:.2f}ms, speed: {tokens_sec_str} toks/s/device"
             )
 

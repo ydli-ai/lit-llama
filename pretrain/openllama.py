@@ -136,6 +136,7 @@ def train(
     prev_t1 = time.time()
 
     for iter_num, train_data in enumerate(train_dataloader):
+        print(iter_num, train_data)
         t0 = time.time()
 
         # determine and set the learning rate for this iteration

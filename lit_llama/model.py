@@ -23,7 +23,7 @@ KVCache = Tuple[torch.Tensor, torch.Tensor]
 @dataclass
 class LLaMAConfig:
     block_size: int = 2048
-    vocab_size: int = 32000
+    vocab_size: int = 50000 # openllama: 32000 -> 50000
     padded_vocab_size: Optional[int] = None
     n_layer: int = 32
     n_head: int = 32

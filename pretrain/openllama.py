@@ -29,13 +29,13 @@ out_dir = "out/training"
 save_interval = 1000
 eval_interval = 1000
 eval_iters = 100
-log_interval = 1
+log_interval = 5
 
 # compile = False
 
 # Hyperparameters
 learning_rate = 6e-4
-batch_size = 8
+batch_size = 16
 micro_batch_size = 1
 max_iters = 6000  # num_epochs * epoch_size // devices
 weight_decay = 1e-1
@@ -50,7 +50,7 @@ min_lr = 6e-5
 
 # Data proportions from https://arxiv.org/pdf/2302.13971.pdf Table 1
 data_config = [
-    ("news-commentary", 8),
+    ("news-commentary", 2.5),
 ]
 
 
@@ -96,8 +96,8 @@ def main(
         model.apply(model._init_weights)
         torch.set_default_dtype(torch.float32)
 
-    # if compile:
-    #     model = torch.compile(model)
+
+    model = torch.compile(model)
 
     optimizer = torch.optim.AdamW(
         model.parameters(),

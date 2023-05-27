@@ -97,7 +97,7 @@ def main(
         torch.set_default_dtype(torch.float32)
 
 
-    model = torch.compile(model)
+    #model = torch.compile(model)
 
     optimizer = torch.optim.AdamW(
         model.parameters(),

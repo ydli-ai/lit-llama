@@ -50,7 +50,7 @@ min_lr = 6e-5
 
 # Data proportions from https://arxiv.org/pdf/2302.13971.pdf Table 1
 data_config = [
-    ("news-commentary", 2.5),
+    ("news-commentary", 8),
 ]
 
 
@@ -237,7 +237,7 @@ def create_dataloader(
     for prefix, _ in data_config:
         filenames = glob.glob(os.path.join(data_dir, prefix + "*"))
         dataset = PackedDataset(
-            filenames, n_chunks=1, block_size=block_size, shuffle=shuffle, seed=seed,
+            filenames, n_chunks=4, block_size=block_size, shuffle=shuffle, seed=seed,
             num_processes=fabric.world_size, process_rank=fabric.global_rank,
         )
         datasets.append(dataset)

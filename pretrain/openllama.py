@@ -106,9 +106,7 @@ def main(
         betas=(beta1, beta2),
     )
 
-    #model, optimizer = fabric.setup(model, optimizer)
-    model = fabric.setup_model(model)
-    optimizer = fabric.setup_optimizer(optimizer)
+    model, optimizer = fabric.setup(model, optimizer)
 
     process_batch_size = batch_size // devices
     grad_accum_steps = process_batch_size // micro_batch_size

@@ -35,8 +35,8 @@ log_interval = 5
 
 # Hyperparameters
 learning_rate = 6e-4
-batch_size = 16
-micro_batch_size = 1
+batch_size = 8
+micro_batch_size = 2
 max_iters = 6000  # num_epochs * epoch_size // devices
 weight_decay = 1e-1
 beta1 = 0.9
